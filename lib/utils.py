@@ -13,9 +13,9 @@ from theano.sandbox.rng_mrg import MRG_RandomStreams
 import operator
 import sys
 sys.path.append("/u/ywu/Documents/eval_GAN/training_GAN/iwae/")
-import exp ## not necessary if do not use iwae models
+#import exp ## not necessary if do not use iwae models
 import lasagne
-import progressbar
+#import progressbar
 from nn import*
 
 np.random.seed(123)
@@ -74,8 +74,10 @@ def load_model(model_type,aux):
 
     if model_type == 'gan10':
         gen = gan_gen_net10()
-        SAVEPATH = '/ais/gobi4/ywu/train_GAN/GAN/'
-        filename = 'sep0.80.5g_lr0.0001d_lr0.001hidden10/sep0.80.5g_lr0.0001d_lr0.001hidden10genepoch'+aux
+        #SAVEPATH = '/ais/gobi4/ywu/train_GAN/GAN/'
+        #filename = 'sep0.80.5g_lr0.0001d_lr0.001hidden10/sep0.80.5g_lr0.0001d_lr0.001hidden10genepoch'+aux
+        SAVEPATH = './models/'
+        filename = 'gan10'
         filename = os.path.join(SAVEPATH, '%s.pkl' % (filename))
         print ('load model '+filename)
         with open(filename, 'r') as f:
@@ -88,8 +90,10 @@ def load_model(model_type,aux):
 
     elif model_type == 'gan50':
         gen = gen_net50() 
-        SAVEPATH = '/ais/gobi4/ywu/train_GAN/GAN/GAN_Yura/'
-        filename = SAVEPATH+'f_all_traing_lr0.0001d_lr0.0001dp0.8hard_target40964genepoch'+aux
+        # SAVEPATH = '/ais/gobi4/ywu/train_GAN/GAN/GAN_Yura/'
+        # filename = SAVEPATH+'f_all_traing_lr0.0001d_lr0.0001dp0.8hard_target40964genepoch'+aux
+        SAVEPATH = './models/'
+        filename = 'gan50'
         """Unpickles and loads parameters into a Lasagne model."""
         filename = os.path.join(SAVEPATH, '%s.pkl' % (filename))
         print ('load model '+filename)
